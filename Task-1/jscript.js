@@ -1,4 +1,4 @@
-var timeLoop,setDate,repLoop,timeDiff;
+var timeLoop,setDate,repLoop,timeDiff,nowTime;
 
 //Function for Start Button
 function start()
@@ -11,10 +11,10 @@ function start()
     var mon = $("#c5").val();     //month
     var mon1 = mon - 1;
     var year = $("#c6").val();       //year
-    setDate= new Date(year,mon1,day,hours,minutes,sec,0);     //date
-     
-    timeLoop = setInterval(function(){
-      time(setDate);
+    setDate = new Date(year,mon1,day,hours,minutes,sec,0);     //date
+    nowTime = new Date(); 
+    timeLoop = setInterval(function(){var t1 = new Date();
+      time(setDate,t1);
       if(timeDiff<=0)
       {clearInterval(timeLoop);
        alert("Times Up!")
@@ -22,17 +22,17 @@ function start()
 
      
 
-    $("#d1").disabled=true;              // Buttons
-                                         // are not
-    for(var i = 1;i<7;i++)               // getting disabled
-     {$("#c"+i).disabled = true;
+    $("#d1").disabled = true;              // Buttons          $("#d1").attr('disabled',true);
+                                           // are not
+    for(var i = 1;i<7;i++)               // getting disabled  
+     {$("#c"+i).disabled = true;         //                    $("#c"+i).attr('disabled',true);
      }
 }
     
 //Finding Time Difference in milliseconds
-function time(a)
+function time(a,t)
 {
-    var nTime = new Date();         //Current Time
+    var nTime = t;         //Current Time
     var ms1 = Date.parse(a);     //Date a in milliseconds       
     var ms2 = Date.parse(nTime);   
     timeDiff = ms1-ms2;             //Difference
@@ -61,10 +61,10 @@ function reset()
    clearInterval(repLoop);
        
    for(var i = 1;i<7;i++)               //Buttons
-    {$("#c"+i).disabled = false;        // are always
+    {$("#c"+i).disabled = false;        // are always      $("#c"+i).attr('disabled',false);
     }                                   //enabled
       
-   $("#d1").disabled=false;     
+   $("#d1").disabled=false;             //                 $("#d1").attr('disabled',false);
        
    for(var i = 1;i<7;i++)
     {$("#c"+i).val() = 0;
@@ -73,8 +73,11 @@ function reset()
 
 //Function for Refresh Button 
 function refresh()
-{  repLoop = setInterval(function(){
-   time(setDate);
+{  stop();
+   var g = nowTime;
+   repLoop = setInterval(function(){
+   time(setDate,g);
+   g = new Date(Date.parse(g)+1000);
    if(timeDiff<=0)
     {clearInterval(repLoop);
      alert("Times Up!")
