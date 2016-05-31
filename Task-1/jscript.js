@@ -1,19 +1,30 @@
-var timeLoop,setDate,repLoop,timeDiff,nowTime;
+var timeLoop,repLoop,timeDiff,nowTime,tLoop;
 
+if(window.performance)
+
+{
+
+if(performance.navigation.type  == 1 )
+          {
+            refresh();
+          }
+}
 //Function for Start Button
 function start()
 {
     
     var hours = $("#c1").val();        //hours
-    var minutes = $("#c2").val();        //minutes
+    var minutes = $("#c2").val();      //minutes
     var sec = $("#c3").val();       //seconds
     var day = $("#c4").val();       //date
     var mon = $("#c5").val();     //month
     var mon1 = mon - 1;
     var year = $("#c6").val();       //year
     setDate = new Date(year,mon1,day,hours,minutes,sec,0);     //date
+    localStorage.setItem('ref1',setDate);
     nowTime = new Date(); 
     timeLoop = setInterval(function(){var t1 = new Date();
+      
       time(setDate,t1);
       if(timeDiff<=0)
       {clearInterval(timeLoop);
@@ -52,6 +63,7 @@ function stop()
 {
   clearInterval(timeLoop);         //Stops the timer
   clearInterval(repLoop);
+  clearInterval(tLoop);
 }
     
 //Function for Reset Button
@@ -59,6 +71,7 @@ function reset()
 {  //stop();
    clearInterval(timeLoop);
    clearInterval(repLoop);
+   clearInterval(tLoop);
        
    for(var i = 1;i<7;i++)               //Buttons
     {$("#c"+i).disabled = false;        // are always      $("#c"+i).attr('disabled',false);
@@ -73,14 +86,21 @@ function reset()
 
 //Function for Refresh Button 
 function refresh()
-{  stop();
-   var g = nowTime;
-   repLoop = setInterval(function(){
-   time(setDate,g);
-   g = new Date(Date.parse(g)+1000);
-   if(timeDiff<=0)
-    {clearInterval(repLoop);
-     alert("Times Up!")
+{  
+     stop(); 
+     var x = new Date(Date.parse(localStorage.getItem('ref1')));
+     var tn = new Date();
+     var t2 = new Date(Date.parse(tn)-1000);
+      
+     tLoop = setInterval(function(){
+      
+     time(x,t2);
+     if(timeDiff<=0)
+      {clearInterval(timeLoop);
+       alert("Times Up!")
        }
-     },1000);
+       tn = new Date();
+       t2 = new Date(Date.parse(tn)-1000);},1000);
 }
+
+
