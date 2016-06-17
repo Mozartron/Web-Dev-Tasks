@@ -4,26 +4,26 @@ var ctx = document.getElementById("canvas").getContext("2d"),
 		  canvasHeight = 600;
 		  
 var hills = new Image();
-hills.src='images/background_hills.png';
-img.src = "images/bg.png";
+hills.src='background_hills.png';
+img.src = "bg.png";
 
 var W = canvas.width;
 var H = canvas.height;
 
 var ice = new Image();
-ice.src ='images/ice.png';
+ice.src ='ice.png';
 var press = new Image();
-press.src = 'images/press.png';
+press.src = 'press.png';
 var press2 = new Image();
-press2.src = 'images/press2.png';
+press2.src = 'press2.png';
 var photo = new Image();
-photo.src = 'images/photo.png';
+photo.src = 'photo.png';
 var oscar = new Image();
-oscar.src = 'images/oscar.png';
+oscar.src = 'oscar.png';
 var jobs = new Image();
-jobs.src = 'images/steve_jobs.png';
+jobs.src = 'steve_jobs.png';
 var martian = new Image();
-martian.src = 'images/martian.png';
+martian.src = 'martian.png';
 
 var vx = 0;
 var v = 2280;
@@ -52,7 +52,7 @@ var srcX1,srcX2,srcX3,srcX4;
 var srcY1,srcY2,srcY3,srcY4; 
   
 var character = new Image(); 
-character.src = "images/leo.png";
+character.src = "leo.png";
  
 
 var ticksPerFrame=5,
