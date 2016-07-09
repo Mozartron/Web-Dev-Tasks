@@ -1,0 +1,28 @@
+<html>
+     <head>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+         <title>Countdown Timer</title>
+         <script type="text/javascript" src="jscript.js"></script>
+         <link rel="stylesheet" href="style.css">
+ 
+     </head>
+  <body >
+     <h1 id="b"> Countdown Timer</h1>
+     <form form = "post">
+         <div>
+            <input class="b1" id="c1" type="number" min="0" max="23" placeholder="hh">
+            <input class="b1" id="c2" type="number" min="0" max="59" placeholder="mm">
+            <input class="b1" id="c3" type="number" min="0" max="59" placeholder="ss">
+            <input class="b1" id="c4" type="number" min="0" max="31" placeholder="dd">
+            <input class="b1" id="c5" type="text"  placeholder="mm">
+            <input class="b1" id="c6" type="text" placeholder="yyyy">
+         </div>
+             <div id="b2">
+                <input class="b3" id="d1" type="button" value="Start" onclick="start()" >
+                <input class="b3" type="button" value="Stop" onclick="stop()" >
+                <input class="b3" type="button" value="Reset" onclick="reset()">
+                <input class="b3" type="button" value="Refresh" onclick="refresh()">
+             </div>
+     </form>
+  </body>
+</html>
