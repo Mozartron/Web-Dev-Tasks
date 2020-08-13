@@ -144,7 +144,7 @@ function drawImage()
 		leo.y < 400 + 70 && leo.y + 100 > 400 || 200 < v1 + 10  && 200 + 30  > v1 &&
 		leo.y < 400 + 70 && leo.y + 100 > 400 ) 
  {
-		 alert("Game Over");location.reload();
+		 alert("Game Over");draw();
  }
 
  if (leo.y <= 0) 
